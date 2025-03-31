@@ -1,6 +1,12 @@
 using Dal_Layer.DBContext;
 using Microsoft.AspNetCore.Connections;
+using Microsoft.CodeAnalysis.Host.Mef;
 using Microsoft.EntityFrameworkCore;
+using Repo_Layer.Implimentations;
+using Repo_Layer.Repositories;
+using Service_layer;
+using Service_layer.Impli;
+using Service_layer.MappingProfile;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +15,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
+builder.Services.AddScoped<ICategoryServieces, CategoryServices>();
+
+builder.Services.AddAutoMapper(typeof(MyAppProfile));
 
 var app = builder.Build();
 

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Dal_Layer\Dal_Layer.csproj" />
-    <ProjectReference Include="..\PracticeMvc\WebUi.csproj" />
   </ItemGroup>
 
 </Project>

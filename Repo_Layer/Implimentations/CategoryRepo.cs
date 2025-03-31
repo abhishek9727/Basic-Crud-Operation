@@ -1,5 +1,6 @@
 ﻿using Dal_Layer;
 using Dal_Layer.DBContext;
+using Microsoft.EntityFrameworkCore;
 using Repo_Layer.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Repo_Layer.Implimentations
     public class CategoryRepo : ICategoryRepo
     {
 
-        ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
         public CategoryRepo(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -52,7 +53,12 @@ namespace Repo_Layer.Implimentations
 
         public void Update(Category category)
         {
-            var ExistingData = _dbContext.Categories.Find(category);
+            var ExistingData = _dbContext.Categories.Find(category.id);
+            if(ExistingData != null)
+            {
+                _dbContext.Entry(category).State = EntityState.Modified;
+                _dbContext.SaveChanges();
+            }
             
         }
     }

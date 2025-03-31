@@ -12,9 +12,9 @@ namespace Dal_Layer
 
         public string Name { get; set; }
 
-        public decimal price { get; set; }
+        public decimal? price { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         public Category Category { get; set; }
     }
