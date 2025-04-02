@@ -14,6 +14,7 @@ namespace Service_layer.MappingProfile
         public MyAppProfile()
         {
             CreateMap<Category, CategoryModel>().ReverseMap();
+            CreateMap<Product, ProductModel>().ReverseMap();
         }
         
     }

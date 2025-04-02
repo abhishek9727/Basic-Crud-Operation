@@ -32,14 +32,17 @@ namespace Service_layer.Impli
             _catrepo.Delete(Id);
         }
 
-        public List<CategoryModel> GetAll()
+        public ICollection<CategoryModel> GetAll()
         {
-            var category = _catrepo.GetAll;
+            var category = _catrepo.GetAll();
             var categoryModels = _mapper.Map<List<CategoryModel>>(category);
             return categoryModels;
+
+            //var category = _catrepo.GetAll(); // Ensure GetAll() is a method, not a property
+            //return _mapper.Map<List<CategoryModel>>(category);
         }
 
-        public CategoryModel GetbyId(int Id)
+        public CategoryModel GetbyId(int? Id)
         {
             Category car = _catrepo.GetbyId(Id);
             return _mapper.Map<CategoryModel>(car);
@@ -47,7 +50,9 @@ namespace Service_layer.Impli
 
         public void Update(CategoryModel category)
         {
-            _catrepo.Update(_mapper.Map<Category>(category));
+            //_catrepo.Update(_mapper.Map<Category>(category));
+            var categ = _mapper.Map<Category>(category);
+            _catrepo.Update(categ);
         }
     }
 }

@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Dal_Layer;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dal_Layer
+namespace ViewModel
 {
-     public class Product
+    public class ProductModel
     {
         public int id { get; set; }
 
@@ -14,7 +16,7 @@ namespace Dal_Layer
 
         public decimal? price { get; set; }
 
-
+        [Required(ErrorMessage = "Please select a category.")]
         public int? CategoryId { get; set; }
 
         public Category Category { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dal_Layer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,9 @@ namespace Service_layer
 {
     public interface ICategoryServieces
     {
-        public List<CategoryModel> GetAll();
+        public ICollection<CategoryModel> GetAll();
 
-        public CategoryModel GetbyId(int Id);
+        public CategoryModel GetbyId(int? Id);
 
         public void Create(CategoryModel category);
 
