@@ -36,12 +36,12 @@ namespace Repo_Layer.Implimentations
             }
         }
 
-        public List<Category> GetAll()
+        public ICollection<Category> GetAll()
         {
             return _dbContext.Categories.ToList();
         }
 
-        public Category GetbyId(int Id)
+        public Category GetbyId(int? Id)
         {
             var GetID = _dbContext.Categories.Find(Id);
             if(GetID != null)
@@ -51,15 +51,27 @@ namespace Repo_Layer.Implimentations
             return null;
         }
 
+        //public void Update(Category category)
+        //{
+        //    var ExistingData = _dbContext.Categories.Find(category.id);
+        //    if(ExistingData != null)
+        //    {
+        //        _dbContext.Entry(category).State = EntityState.Modified;
+        //        _dbContext.SaveChanges();
+        //    }
+            
+        //}
         public void Update(Category category)
         {
-            var ExistingData = _dbContext.Categories.Find(category.id);
-            if(ExistingData != null)
+            var existingCategory = _dbContext.Categories.Find(category.id);
+            if (existingCategory != null)
             {
-                _dbContext.Entry(category).State = EntityState.Modified;
-                _dbContext.SaveChanges();
+                // Update only modified fields
+                existingCategory.Name = category.Name;
+
+
+                _dbContext.SaveChanges(); // Save changes
             }
-            
         }
     }
 }

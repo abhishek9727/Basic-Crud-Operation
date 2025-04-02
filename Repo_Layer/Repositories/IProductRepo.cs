@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Repo_Layer.Repositories
 {
-    public interface ICategoryRepo
+    public interface IProductRepo
     {
-        public ICollection<Category> GetAll();
+        public IEnumerable<Product> GetAll();
 
-        public Category GetbyId(int? Id);
+        public Product GetbyId(int? Id);
 
-        public void Create(Category category);
+        public void Create(Product product);
 
-        public void Update(Category category);
+        public void Update(Product product);
 
         public void Delete(int Id);
     }
