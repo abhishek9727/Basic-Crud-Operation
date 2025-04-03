@@ -76,9 +76,6 @@ namespace WebUi.Controllers
 
         }
 
-        //push
-
-
         [HttpGet]
         public IActionResult Details(int id)
         {
@@ -117,7 +114,7 @@ namespace WebUi.Controllers
             }
         }
 
-        //Mybrach To Main Branch
+        
 
 
 
