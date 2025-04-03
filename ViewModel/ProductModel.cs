@@ -12,8 +12,10 @@ namespace ViewModel
     {
         public int id { get; set; }
 
+        [Required(ErrorMessage ="Plz fill Name")]
         public string Name { get; set; }
 
+        [Required]
         public decimal? price { get; set; }
 
         [Required(ErrorMessage = "Please select a category.")]

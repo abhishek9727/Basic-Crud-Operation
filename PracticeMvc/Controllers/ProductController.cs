@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Service_layer;
+using Service_layer.Impli;
 using ViewModel;
 
 namespace WebUi.Controllers
@@ -73,6 +75,51 @@ namespace WebUi.Controllers
             return RedirectToAction("Index");
 
         }
+
         //push
+
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var products = _productService.GetbyId(id);
+            return View(products);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var product = _productService.GetbyId(id);
+            return View(product);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var product = _productService.GetbyId(id);
+
+            if (product == null)
+            {
+                return NotFound(); // If the product doesn't exist, return 404.
+            }
+
+            try
+            {
+                _productService.Delete(product.id);
+                return RedirectToAction("Index"); // Redirect after successful deletion.
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Error deleting product. Please try again.");
+                Console.WriteLine(ex.Message); // Log the exception
+                return View("Delete", product); // Show the delete page again.
+            }
+        }
+
+        //Mybrach To Main Branch
+
+
+
     }
 }
