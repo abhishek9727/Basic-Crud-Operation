@@ -58,7 +58,7 @@ namespace WebUi.Controllers
 
 
         [HttpGet]
-        public IActionResult Edit(int? Id)
+        public IActionResult Edit(int Id)
         {
             if (Id == null)
             {
@@ -94,7 +94,7 @@ namespace WebUi.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int id)
         {
             if(id == null)
             {

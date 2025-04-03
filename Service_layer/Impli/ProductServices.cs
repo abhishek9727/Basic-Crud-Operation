@@ -22,6 +22,13 @@ namespace Service_layer.Impli
             _mapper = mapper;
         }
 
+    
+
+
+        public bool Any(Func<Product, bool> predicate)
+        {
+            return _prorepo.Any(predicate);
+        }
 
         public void Create(ProductModel product)
         {

@@ -27,10 +27,11 @@ namespace Repo_Layer.Implimentations
 
         public void Delete(int Id)
         {
-            var remove = _dbContext.Categories.Find(Id);
+            var remove = _dbContext.Categories.Include(c =>c.products).FirstOrDefault(c =>c.id == Id);
 
             if(remove != null)
             {
+                _dbContext.Products.RemoveRange(remove.products);
                 _dbContext.Categories.Remove(remove);
                 _dbContext.SaveChanges();
             }

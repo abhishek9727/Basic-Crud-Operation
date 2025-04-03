@@ -18,5 +18,7 @@ namespace Repo_Layer.Repositories
         public void Update(Product product);
 
         public void Delete(int Id);
+        bool Any(Func<Product, bool> predicate);
+
     }
 }

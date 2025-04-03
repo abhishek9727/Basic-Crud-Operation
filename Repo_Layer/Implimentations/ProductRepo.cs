@@ -6,6 +6,7 @@ using Repo_Layer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,6 +38,8 @@ namespace Repo_Layer.Implimentations
             }
         }
 
+  
+
         public IEnumerable<Product> GetAll()
         {
             return _dbcontext.Products.Include(p => p.Category).ToList();
@@ -59,6 +62,11 @@ namespace Repo_Layer.Implimentations
                 _dbcontext.SaveChanges();
             }
             
+        }
+
+        public bool Any(Func<Product, bool> predicate)
+        {
+            return _dbcontext.Products.Any(predicate);
         }
     }
 }

@@ -16,6 +16,12 @@ namespace Dal_Layer.DBContext
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<UserRole> userRoles { get; set; }
+
+        public DbSet<Role> roles { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>()

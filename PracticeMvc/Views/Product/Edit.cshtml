@@ -28,7 +28,7 @@
 
                 <select asp-for="CategoryId" class="form-control" required>
 
-                    <option value="-1">Select Category Name</option>
+                    <option value="">Select Category Name</option>
                     @foreach (var item in ViewBag.Categories)
                     {
                         <option value="@item.id" class="text-danger">@item.Name</option>

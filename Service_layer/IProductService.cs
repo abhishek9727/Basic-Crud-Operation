@@ -19,5 +19,7 @@ namespace Service_layer
         public void Update(ProductModel product);
 
         public void Delete(int Id);
+        bool Any(Func<Product, bool> predicate);
+
     }
 }
